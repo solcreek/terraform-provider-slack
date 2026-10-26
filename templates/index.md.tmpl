@@ -1,0 +1,21 @@
+---
+page_title: "Slack Provider"
+description: |-
+  Manage Slack Apps as Code.
+---
+
+# Slack Provider
+
+Manage Slack Apps as Code with Terraform and OpenTofu through Slack's public Manifest API.
+
+Set `SLACK_APP_CONFIGURATION_TOKEN` to a Slack app configuration access token. Configuration tokens expire after 12 hours; rotate them outside Terraform and persist both rotated tokens. Ordinary bot and Socket Mode tokens are not configuration tokens.
+
+{{ tffile "examples/provider/provider.tf" }}
+
+{{ .SchemaMarkdown | trimspace }}
+
+## State and ownership
+
+The `slack_app` resource owns the complete app manifest. Updates replace the entire configuration, and destroy permanently deletes the app. App installation and OAuth exchanges are separate operations. Scope changes may require reinstalling the app.
+
+Creation secrets are sensitive but persist in state. Use an encrypted, access-controlled backend. Import cannot recover credentials, and external credential rotation is not detectable through manifest export.
