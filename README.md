@@ -11,7 +11,7 @@ The provider manages app configuration through Slack's public Manifest API. It s
 
 ## Quick start
 
-The intended OpenTofu Registry address is `registry.opentofu.org/solcreek/slack`. Registry publication is pending; until a signed release is indexed, use the local development instructions below. See [release and registry setup](docs/guides/publishing.md) for publication status and maintainer instructions.
+The intended OpenTofu Registry address is `registry.opentofu.org/solcreek/slack`. Registry publication is pending; until a signed release is indexed, use the local development instructions below.
 
 ```hcl
 terraform {
@@ -112,7 +112,7 @@ provider_installation {
 
 Set `TF_CLI_CONFIG_FILE` to that file, then run plan/apply directly in `examples/basic`. The provider itself does not need registry initialization with a development override. Do not commit credentials or state.
 
-CI runs unit/race tests, Terraform and OpenTofu protocol tests, documentation checks, dependency license checks, and vulnerability scanning. Tagged releases use GoReleaser, platform ZIP archives, a protocol manifest, SHA256 checksums, and GPG signatures. Configure the release signing secrets and registry registration before publishing.
+CI runs unit/race tests, Terraform and OpenTofu protocol tests, documentation checks, dependency license checks, and vulnerability scanning.
 
 No live Slack API verification has been performed for the initial implementation. Validate against a dedicated development workspace before production adoption.
 
